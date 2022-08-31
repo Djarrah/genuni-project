@@ -14,9 +14,9 @@ public partial class _Default : System.Web.UI.Page
     {
         
 
-        string CorsiAttivi = ltlCorsiAttivi.Text;
-        string AccettazioneCorsi = ltlAccettazioneCorsi.Text;
-        string StoricoCorsi = ltlStoricoCorsi.Text;
+        //string CorsiAttivi = ltlCorsiAttivi.Text;
+        //string AccettazioneCorsi = ltlAccettazioneCorsi.Text;
+        //string StoricoCorsi = ltlStoricoCorsi.Text;
 
 
         //variabili corsi
