@@ -22,23 +22,34 @@ public partial class login2 : System.Web.UI.Page
 
         // occhio alla pass, è criptata!! se volete fare delle prove inserendo qualcosa a mano dal DB
         // togliete il CRYPTA a riga 29
-        UTENTI u = new UTENTI();
-        u.email = txtMail.Text.Trim();
-        u.password = CRYPTA.Crypta(txtPassword.Text.Trim());
+        UTENTI.Utenti_WSSoapClient U = new UTENTI.Utenti_WSSoapClient();
+        string email = txtMail.Text.Trim();
+        string password = CRYPTA.Crypta(txtPassword.Text.Trim());
 
         // se il login va a buon fine, reindirizzo alla pagina figlia "default.aspx
         // e mi salvo il tipoUtente nella session
+        
 
-        if (u.Login() == true)
+        if (U.Login(email, password) == true)
         {
-            int codiceUtente = u.RecuperaCodUtente();
-            Session["tipoUtente"] = u.RecuperaTipoUtente(codiceUtente);
+            int codiceUtente = U.RecuperaCodUtente();
+            Session["tipoUtente"] = U.RecuperaTipoUtente(codiceUtente);
             Session["CodiceUtente"] = codiceUtente;
             Response.Redirect("GestioneLibri.aspx");
         }
 
         else
         {
+            ESTERNI.Esterni_WSSoapClient E = new ESTERNI.Esterni_WSSoapClient();
+
+            if (E.Login(email, password) == true)
+            {
+                int codiceUtente = U.RecuperaCodUtente();
+                Session["tipoUtente"] = U.RecuperaTipoUtente(codiceUtente);
+                Session["CodiceUtente"] = codiceUtente;
+                Response.Redirect("GestioneLibri.aspx");
+            }
+
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Password o email errati o autorizzazione all'accesso negata')", true);
             return;
         }

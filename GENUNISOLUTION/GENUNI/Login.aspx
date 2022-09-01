@@ -67,6 +67,9 @@
                 </nav>
                 <!-- .main-nav -->
         </header>
+
+        <asp:DropDownList ID="ddlDatabase" runat="server"></asp:DropDownList>
+
         <!--========================== Login ============================-->
         <div id="containerLogin">
 
@@ -77,10 +80,12 @@
                             <h2>Login</h2>
                             <hr class="colorgraph">
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Indirizzo email" />
+                                <input type="email" name="email" id="mail" class="form-control input-lg" placeholder="Indirizzo email" />
+                                <asp:TextBox ID="txtMail" runat="server" CssClass="form-control input-lg"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" />
+                                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control input-lg"></asp:TextBox>
                             </div>
                            <%-- <span class="button-checkbox">
                                 <button type="button" class="btn" data-color="info">Ricordami</button>
