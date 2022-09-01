@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="registrazione_conferma.aspx.cs" Inherits="registrazione_conferma" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RegistrazioneConferma.aspx.cs" Inherits="registrazione_conferma" %>
 
 <!DOCTYPE html>
 
