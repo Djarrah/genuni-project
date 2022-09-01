@@ -18,7 +18,7 @@ public partial class Default2 : System.Web.UI.Page
         //        return;
         //    }
 
-        //    [WebMethod]
+
 
         //    ESTERNI E = new ESTERNI();
         //    E.CodiceDoc = int.Parse(Session["CodiceDoc"].ToString());
