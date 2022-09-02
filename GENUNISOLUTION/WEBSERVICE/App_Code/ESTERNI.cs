@@ -226,4 +226,14 @@ public class ESTERNI
 
         c.EseguiCmd(cmd);
     }
+
+    public int RecuperaCodUtente()
+    {
+        SqlCommand cmd = new SqlCommand("ESTERNI_GETCODUTENTE");
+        cmd.Parameters.AddWithValue("@usr", USR);
+
+        CONNESSIONE C = new CONNESSIONE();
+
+        return C.EseguiSelect(cmd).Rows[0].Field<int>("codUtente");
+    }
 }

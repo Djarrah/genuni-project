@@ -38,7 +38,7 @@ public class Test_WS : System.Web.Services.WebService
         DataTable dt = new DataTable();
         TEST t = new TEST();
         t.CHIAVE = CHIAVE;
-        dt = t.SelectAll();
+        dt = t.SelectOne();
         dt.TableName = "Test";
         return dt;
     }

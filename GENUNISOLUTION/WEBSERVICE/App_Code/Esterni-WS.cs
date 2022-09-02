@@ -214,4 +214,13 @@ public class Esterni_WS : System.Web.Services.WebService
         return registrato;
 
     }
+
+    [WebMethod]
+    public int RecuperaCodUtente(string USR)
+    {
+        ESTERNI e = new ESTERNI();
+        e.USR = USR;
+        int codUtente = e.RecuperaCodUtente();
+        return codUtente;
+    }
 }
