@@ -22,9 +22,11 @@ public partial class login2 : System.Web.UI.Page
 
         // occhio alla pass, è criptata!! se volete fare delle prove inserendo qualcosa a mano dal DB
         // togliete il CRYPTA a riga 29
+
+        CRYPTA.Crypta_WSSoapClient C = new CRYPTA.Crypta_WSSoapClient();
         UTENTI.Utenti_WSSoapClient U = new UTENTI.Utenti_WSSoapClient();
         string email = txtMail.Text.Trim();
-        string password = CRYPTA.Crypta(txtPassword.Text.Trim());
+        string password = C.Crypta(txtPassword.Text.Trim());
 
         // se il login va a buon fine, reindirizzo alla pagina figlia "default.aspx
         // e mi salvo il tipoUtente nella session
@@ -33,9 +35,11 @@ public partial class login2 : System.Web.UI.Page
         if (U.Login(email, password) == true)
         {
             int codiceUtente = U.RecuperaCodUtente();
-            Session["tipoUtente"] = U.RecuperaTipoUtente(codiceUtente);
-            Session["CodiceUtente"] = codiceUtente;
+            Session["TipoAttore"] = U.RecuperaTipoUtente(codiceUtente);
+            Session["CodiceAttore"] = codiceUtente;
             Response.Redirect("GestioneLibri.aspx");
+
+
         }
 
         else
@@ -45,8 +49,8 @@ public partial class login2 : System.Web.UI.Page
             if (E.Login(email, password) == true)
             {
                 int codiceUtente = U.RecuperaCodUtente();
-                Session["tipoUtente"] = U.RecuperaTipoUtente(codiceUtente);
-                Session["CodiceUtente"] = codiceUtente;
+                Session["TipoAttore"] = U.RecuperaTipoUtente(codiceUtente); //D
+                Session["CodiceAttore"] = codiceUtente; // id del docente
                 Response.Redirect("GestioneLibri.aspx");
             }
 
