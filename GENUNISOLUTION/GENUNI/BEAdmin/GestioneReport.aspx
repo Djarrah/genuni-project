@@ -11,8 +11,8 @@
     
 
     <%-- SCELTA REPORT --%>
-    <asp:CheckBox ID="chkDocenti" runat="server" Text="Docenti" GroupName="Report" Checked="True" />
-    <asp:CheckBox ID="chkStudenti" runat="server" Text="Studenti" GroupName="Report" />
+    <asp:CheckBox ID="chkDocenti" runat="server" Text="Docenti" GroupName="Report" Checked="True" AutoPostBack="True" OnCheckedChanged="chkDocenti_CheckedChanged" />
+    <asp:CheckBox ID="chkStudenti" runat="server" Text="Studenti" GroupName="Report" Checked="True"  AutoPostBack="True" OnCheckedChanged="chkStudenti_CheckedChanged" />
     <hr />
     <%-- DATA INIZIO REPORT --%>
     <asp:Label ID="lblDataInizio" runat="server" Text="Dal"></asp:Label>
