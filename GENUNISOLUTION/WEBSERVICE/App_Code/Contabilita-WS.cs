@@ -126,12 +126,32 @@ public class Contabilita_WS : System.Web.Services.WebService
         return CONTABILITA.UtiliTipoCorso(DATAINIZIO, DATAFINE, TIPOCORSO);
     }
 
-    //metodo che riporta la lista dei costi per un singolo docente
+    /// <summary>
+    /// metodo che riporta la lista dei costi per un singolo docente
+    /// </summary>
+    /// <param name="DATAINIZIO"></param>
+    /// <param name="DATAFINE"></param>
+    /// <param name="CODICEDOCENTE"></param>
+    /// <returns></returns>
     [WebMethod]
     public DataTable ListaSpeseDocenteSingolo(string DATAINIZIO, string DATAFINE, int CODICEDOCENTE)
     {
         DataTable dt = CONTABILITA.ListaSpeseDocenteSingolo(DATAINIZIO, DATAFINE, CODICEDOCENTE);
         dt.TableName = "Lista spese";
         return dt;
+    }
+
+    /// <summary>
+    /// metodo che riporta il costo del docente della materia assegnata passata come parametro
+    /// </summary>
+    /// <param name="CODICEMATERIA"></param>
+    /// <returns></returns>
+    [WebMethod]
+    public DataTable CostoDocentePerMateria(int CODICEMATERIA)
+    {
+        DataTable dt = CONTABILITA.CostoDocentePerMateria(CODICEMATERIA);
+        dt.TableName = "Lista spese";
+        return dt;
+
     }
 }

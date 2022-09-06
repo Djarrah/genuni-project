@@ -270,6 +270,66 @@ public class Corsi_WS : System.Web.Services.WebService
         dt.TableName = "Corso";
         return dt;
     }
+    
+    [WebMethod]
+    public DataTable Select_Utenti_Filtro_Q()
+    {
+        DataTable dt = new DataTable();
+        CORSI c = new CORSI();
+        dt = c.Select_Utenti_Filtro_Q();
+        dt.TableName = "Corso";
+        return dt;
+    }
 
+    [WebMethod]
+    public void Update_Status(int CHIAVE_CORSO)
+    {
+        CORSI c = new CORSI();
+        c.CHIAVE_CORSO = CHIAVE_CORSO;
+
+        c.Update_Status();
+    }
+
+    [WebMethod]
+    public DataTable Utenti_SelectOne(int CHIAVE)
+    {
+        DataTable dt = new DataTable();
+        CORSI c = new CORSI();
+        c.CHIAVE_CORSO = CHIAVE;
+        dt = c.Utenti_SelectOne();
+        dt.TableName = "Corso";
+        return dt;
+    }
+
+    /// <summary>
+    /// metodo che restuisce tutti i corsi con status P
+    /// </summary>
+    /// <returns></returns>
+    [WebMethod]
+    public DataTable Corsi_SelectAll_Preparati()
+    {
+        DataTable dt = new DataTable();
+        CORSI C = new CORSI();
+        dt = C.Corsi_SelectAll_Preparati();
+        dt.TableName = "Corsi preparati";
+        return dt;
+    }
+
+    /// <summary>
+    /// metodo che modifica il corso aggiungendo status Q
+    /// </summary>
+    /// <param name="COD_CORSO"></param>
+    /// <param name="COSTO"></param>
+    /// <param name="STATUS"></param>
+    [WebMethod]
+    public void Corsi_Quotazione(int COD_CORSO, int COSTO, string STATUS)
+    {
+        CORSI C = new CORSI();
+        C.CHIAVE = COD_CORSO;
+        C.COSTO = COSTO;
+        C.STATUS = STATUS;
+
+        C.Corsi_Quotazione();
+    }
 
 }

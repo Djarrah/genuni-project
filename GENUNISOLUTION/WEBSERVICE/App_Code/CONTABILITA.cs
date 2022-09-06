@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IdentityModel.Protocols.WSTrust;
 using System.Linq;
 using System.Web;
 
@@ -148,7 +149,13 @@ public static class CONTABILITA
         return SommaRicaviTipoCorso(dataInizio, dataFine, tipoCorso) - SommaSpeseTipoCorso(dataInizio, dataFine, tipoCorso);
     }
 
-    //metodo che riporta la contabilita per un singolo docente
+    /// <summary>
+    /// metodo che riporta la contabilita per un singolo docente
+    /// </summary>
+    /// <param name="dataInizio"></param>
+    /// <param name="dataFine"></param>
+    /// <param name="codiceDocente"></param>
+    /// <returns></returns>
     public static DataTable ListaSpeseDocenteSingolo(string dataInizio, string dataFine, int codiceDocente)
     {
         SqlCommand cmd = new SqlCommand("CONTABILITA_COSTO_DOCENTESINGOLO");
@@ -156,6 +163,18 @@ public static class CONTABILITA
         cmd.Parameters.AddWithValue("@dataFine", dataFine);
         cmd.Parameters.AddWithValue("@codiceDocente", codiceDocente);
 
+        return new CONNESSIONE().EseguiSelect(cmd);
+    }
+
+    /// <summary>
+    /// metodo che riporta il costo del docente della materia assegnata passata come parametro
+    /// </summary>
+    /// <param name="codiceMateria"></param>
+    /// <returns></returns>
+    public static DataTable CostoDocentePerMateria(int codiceMateria)
+    {
+        SqlCommand cmd = new SqlCommand("CONTABILITA_MATERIE_COSTO_DOCENTE");
+        cmd.Parameters.AddWithValue("@Cod_Materia", codiceMateria);
         return new CONNESSIONE().EseguiSelect(cmd);
     }
 }
